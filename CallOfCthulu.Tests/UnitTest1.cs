@@ -1,10 +1,12 @@
 namespace CallOfCthulu.Tests;
 
-public class UnitTest1
+using CallOfCthulu;
+
+public class DiceRollingTests
 {
     [Fact]
-    public void Test1()
+    public void RollDice()
     {
-        
+
     }
 }

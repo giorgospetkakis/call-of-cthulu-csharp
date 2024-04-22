@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallOfCthulu", "CallOfCthulu\CallOfCthulu.csproj", "{9D04323F-13EF-4FE7-BC83-3730DDBC0335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallOfCthulu.Tests", "CallOfCthulu.Tests\CallOfCthulu.Tests.csproj", "{66DCD189-56B4-4867-8663-8654A0D20963}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D04323F-13EF-4FE7-BC83-3730DDBC0335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D04323F-13EF-4FE7-BC83-3730DDBC0335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D04323F-13EF-4FE7-BC83-3730DDBC0335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D04323F-13EF-4FE7-BC83-3730DDBC0335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66DCD189-56B4-4867-8663-8654A0D20963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66DCD189-56B4-4867-8663-8654A0D20963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66DCD189-56B4-4867-8663-8654A0D20963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66DCD189-56B4-4867-8663-8654A0D20963}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

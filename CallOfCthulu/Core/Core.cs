@@ -10,23 +10,60 @@ namespace CallOfCthulu
         CriticalSuccess
     }
 
-    public enum RollType
-    {
-        Normal,
-        BonusDie,
-        PenaltyDie
-    }
-
     public static class Core
     {
-        public static RollResult Roll(Skill skill, RollType type)
-            => type switch 
+        internal static int OpposedRoll((Skill skill, int roll) roll1, (Skill skill, int roll) roll2)
+        {
+            RollResult result1 = Roll(roll1.skill, roll1.roll);
+            RollResult result2 = Roll(roll2.skill, roll2.roll);
+            
+            if (result1 > result2)
             {
-                RollType.Normal => Roll(skill, Dice.D100.Roll()),
-                RollType.BonusDie => Roll(skill, Dice.D100.RollWithBonusDie()),
-                RollType.PenaltyDie => Roll(skill, Dice.D100.RollWithPenaltyDie()),
-                _ => throw new Exception($"Could not determine roll type for {type}.")
-            };
+                return 1;
+            }
+            else if (result1 < result2)
+            {
+                return -1;
+            }
+            else
+            {
+                int extraRoll1;
+                int extraRoll2;
+
+                do
+                {
+                    extraRoll1 = Dice.D100.Roll();
+                    extraRoll2 = Dice.D100.Roll();
+                }
+                while(extraRoll1 == extraRoll2);
+
+                return extraRoll1 > extraRoll2 ? 1 : -1;
+            }
+        }
+
+        public static RollResult Roll(Skill skill, int bonusDice, int penaltyDice)
+        {
+            if (bonusDice > 0 && penaltyDice > 0)
+            {
+                throw new ArgumentException("Cannot have both bonus and penalty dice.");
+            }
+
+            if (bonusDice > 0)
+            {
+                int roll = Dice.D100.RollWithBonusDice(bonusDice);
+                return Roll(skill, roll);
+            }
+            else if (penaltyDice > 0)
+            {
+                int roll = Dice.D100.RollWithPenaltyDice(penaltyDice);
+                return Roll(skill, roll);
+            }
+            else
+            {
+                int roll = Dice.D100.Roll();
+                return Roll(skill, roll);
+            }
+        }
 
         internal static RollResult Roll(Skill skill, int roll)
         {

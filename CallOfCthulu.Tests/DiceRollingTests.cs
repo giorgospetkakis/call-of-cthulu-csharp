@@ -64,7 +64,7 @@ public class DiceRollingTests
         for (int i = 0; i < 10000; i++)
         {
             D100 die = new D100();
-            int roll = die.RollWithBonusDie();
+            int roll = die.RollWithBonusDice(10);
             Assert.InRange(roll, 1, 100);
         }
     }
@@ -75,7 +75,7 @@ public class DiceRollingTests
         for (int i = 0; i < 10000; i++)
         {
             D100 die = new D100();
-            int roll = die.RollWithPenaltyDie();
+            int roll = die.RollWithPenaltyDice(10);
             Assert.InRange(roll, 1, 100);
         }
     }

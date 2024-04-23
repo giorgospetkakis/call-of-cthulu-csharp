@@ -52,21 +52,23 @@ namespace CallOfCthulu
     public class D100 : Die
     {
         public D100() => Sides = 100;
-        public int RollWithBonusDie()
+        public int RollWithBonusDice(int numBonusDice)
         {
-            int tens1 = Dice.D10.Roll();
-            int tens2 = Dice.D10.Roll();
+            List<int> tens = new List<int> ();
+            for (int i = 0; i < numBonusDice; i++)
+                tens.Add(Dice.D10.Roll());
             int ones = Dice.D10.Roll();
-            int roll = (Math.Max(tens1, tens2) * 10) + ones;
+            int roll = (tens.Max() * 10) + ones;
             return roll > 100 ? roll - 100 : roll;
         }
 
-        public int RollWithPenaltyDie()
+        public int RollWithPenaltyDice(int numPenaltyDice)
         {
-            int tens1 = Dice.D10.Roll();
-            int tens2 = Dice.D10.Roll();
+            List<int> tens = new List<int> ();
+            for (int i = 0; i < numPenaltyDice; i++)
+                tens.Add(Dice.D10.Roll());
             int ones = Dice.D10.Roll();
-            int roll = (Math.Min(tens1, tens2) * 10) + ones;
+            int roll = (tens.Min() * 10) + ones;
             return roll > 100 ? roll - 100 : roll;
         }
     }

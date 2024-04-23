@@ -28,7 +28,7 @@ namespace CallOfCthulu
                 _ => throw new Exception($"Could not determine roll type for {type}.")
             };
 
-        static RollResult Roll(Skill skill, int roll)
+        internal static RollResult Roll(Skill skill, int roll)
         {
             if ((skill.Value >= 50 && roll == 100) || (skill.Value < 50 && roll >= 96))
             {
@@ -40,11 +40,11 @@ namespace CallOfCthulu
             }
             else if (roll <= skill.Value / 5)
             {
-                return RollResult.CriticalSuccess;
+                return RollResult.ExtremeSuccess;
             }
             else if (roll <= skill.Value / 2)
             {
-                return RollResult.ExtremeSuccess;
+                return RollResult.HardSuccess;
             }
             else if (roll <= skill.Value)
             {

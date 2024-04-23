@@ -54,18 +54,20 @@ namespace CallOfCthulu
         public D100() => Sides = 100;
         public int RollWithBonusDie()
         {
-            var tens1 = Roll() % 10;
-            var tens2 = Roll() % 10;
-            var ones = Roll();
-            return Math.Max(tens1, tens2) * 10 + ones;
+            int tens1 = Dice.D10.Roll();
+            int tens2 = Dice.D10.Roll();
+            int ones = Dice.D10.Roll();
+            int roll = (Math.Max(tens1, tens2) * 10) + ones;
+            return roll > 100 ? roll - 100 : roll;
         }
 
         public int RollWithPenaltyDie()
         {
-            var tens1 = Roll() % 10;
-            var tens2 = Roll() % 10;
-            var ones = Roll();
-            return Math.Min(tens1, tens2) * 10 + ones;
+            int tens1 = Dice.D10.Roll();
+            int tens2 = Dice.D10.Roll();
+            int ones = Dice.D10.Roll();
+            int roll = (Math.Min(tens1, tens2) * 10) + ones;
+            return roll > 100 ? roll - 100 : roll;
         }
     }
 }
